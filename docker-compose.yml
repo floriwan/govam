@@ -1,0 +1,47 @@
+version: "3"
+services:
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: mariadb
+    ports:
+      - "3306:3306"
+    networks:
+      - database
+      
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - internal
+    volumes:
+      - ./data/:/var/www/html/
+      - ./logs/nginx:/var/log/nginx/
+
+  php:
+    image: php:fpm-alpine
+    networks:
+      - internal
+    volumes:
+      - ./data/:/var/www/html/
+      - ./logs/php.log:/var/log/fpm-php.www.log
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - "8090:80"
+    environment:
+      PMA_HOST: mariadb
+    networks:
+      - database
+    depends_on:
+      - mariadb
+
+networks:
+  internal:
+    driver: bridge
+  database:
+    driver: bridge
