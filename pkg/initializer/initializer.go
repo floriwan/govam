@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/floriwan/govam/data/pkg/database"
 	"github.com/floriwan/govam/models"
+	"github.com/floriwan/govam/pkg/database"
 	"github.com/spf13/viper"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"

@@ -1,0 +1,17 @@
+@host = localhost:8081
+// Generate JWT
+GET http://{{host}}/ HTTP/1.1
+content-type: application/json
+    
+{
+    
+}
+
+###
+
+GET http://{{host}}/user HTTP/1.1
+content-type: application/json
+    
+{
+    
+}

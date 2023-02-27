@@ -3,8 +3,8 @@ package controllers
 import (
 	"net/http"
 
-	"github.com/floriwan/govam/data/pkg/database"
 	"github.com/floriwan/govam/models"
+	"github.com/floriwan/govam/pkg/database"
 	"github.com/gin-gonic/gin"
 )
 

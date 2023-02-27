@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	"github.com/floriwan/govam/data/pkg/initializer"
 	"github.com/floriwan/govam/handler"
+	"github.com/floriwan/govam/pkg/initializer"
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,7 +16,6 @@ func main() {
 		log.Fatal("could not load configation file", err)
 	}
 
-	// migrate database
 	if err := initializer.ConnectDB(config); err != nil {
 		log.Fatal(err)
 	}
