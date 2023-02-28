@@ -1,9 +1,16 @@
 <body>
-	  {{ template "globals/header.tmpl" .}}
-	  <div>
-		  CONETNETN AREA
-		<a href="/">Home</a>
-		<a href="/user/">User</a>
+	{{ template "globals/header.tmpl" .}}
 
-	  </div>
-	  {{ template "globals/footer.tmpl" .}}
+	<div>
+		<ul>
+		<li><a href="/">Home</a>
+		<li><a href="user/">User</a>
+		<li><a href="registration">Registration</a>
+		</ul>
+	</div>
+
+	<div>
+		<p>CONTENT AREA</p>
+	</div>
+
+	{{ template "globals/footer.tmpl" .}}

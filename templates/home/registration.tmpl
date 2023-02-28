@@ -1,0 +1,35 @@
+<body>
+	{{ template "globals/header.tmpl" .}}
+
+	<div>
+		<ul>
+		<li><a href="/">Home</a>
+		<li><a href="user/">User</a>
+		<!--<li><a href="registration">Registration</a>-->
+		</ul>
+	</div>
+
+	<div>
+		<p>REGISTRATION</p>
+
+        <p>
+            <form action="api/user/register/form" method="POST">
+                <label for="firstname">First name:</label>   
+                <input type="text" id="firstname" name="firstname"><br>
+
+                <label for="lastname">Last name:</label>
+                <input type="text" id="lastname" name="lastname"><br>
+
+                <label for="email">email:</label>
+                <input type="text" id="email" name="email"><br>
+
+                <label for="password">Password:</label>
+                <input type="text" id="password" name="password"><br>
+
+                <input type="submit" value="Submit">
+            </form>
+        </p>
+
+	</div>
+
+	{{ template "globals/footer.tmpl" .}}
