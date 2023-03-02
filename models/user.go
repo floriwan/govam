@@ -1,16 +1,22 @@
 package models
 
 import (
+	"time"
+
+	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
-	"gorm.io/gorm"
 )
 
 type User struct {
-	gorm.Model
-	Name     string `json:"name" binding:"required"`
-	Username string `json:"username" binding:"required" gorm:"unique"`
-	Email    string `json:"email" binding:"required,email" gorm:"unique"`
-	Password string `json:"password"`
+	ID               uuid.UUID `gorm:"type:uuid;default:uuid_generate_v4();primary_key"`
+	Name             string    `gorm:"type:varchar(255);not null"`
+	Lastname         string    `json:"lastname" binding:"required"`
+	Password         string    `gorm:"not null"`
+	Email            string    `gorm:"uniqueIndex;not null"`
+	VerificationCode string
+	Verified         bool      `gorm:"not null"`
+	CreatedAt        time.Time `gorm:"not null"`
+	UpdatedAt        time.Time `gorm:"not null"`
 }
 
 func (user *User) HashPassword(password string) error {

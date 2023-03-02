@@ -14,8 +14,8 @@ func RegisterUserForm(context *gin.Context) {
 
 	user := models.User{
 		Email:    context.PostForm("email"),
-		Name:     context.PostForm("firstname"),
-		Username: context.PostForm("lastname"),
+		Name:     context.PostForm("name"),
+		Lastname: context.PostForm("lastname"),
 		Password: context.PostForm("password"),
 	}
 
@@ -33,7 +33,12 @@ func RegisterUserForm(context *gin.Context) {
 		context.Abort()
 		return
 	}
-	context.JSON(http.StatusCreated, gin.H{"userId": user.ID, "email": user.Email, "username": user.Username})
+	context.JSON(http.StatusCreated, gin.H{
+		"userId":   user.ID,
+		"email":    user.Email,
+		"name":     user.Name,
+		"lastname": user.Lastname,
+	})
 
 }
 
@@ -55,5 +60,11 @@ func RegisterUser(context *gin.Context) {
 		context.Abort()
 		return
 	}
-	context.JSON(http.StatusCreated, gin.H{"userId": user.ID, "email": user.Email, "username": user.Username})
+	context.JSON(http.StatusCreated, gin.H{
+		"userId":   user.ID,
+		"email":    user.Email,
+		"name":     user.Name,
+		"lastname": user.Lastname,
+	})
+
 }
